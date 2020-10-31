@@ -2,7 +2,7 @@
 
 void usage() {
     printf("syntax: NW_YJ <interface> <mac address>\n");
-    printf("sample: NW_YJ wlan1 123456123456\n");
+    printf("sample: NW_YJ wlan1 aa:bb:cc:dd:ee:ff\n");
 }
 
 int main(int argc, char* argv[]){
