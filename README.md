@@ -21,5 +21,6 @@ sudo ifconfig wlan0 up
 - **Execute Program**
 ```
 make
+sudo ./NW_YJ <interface> <mac address>
 sudo ./NW_YJ wlan0 aa:bb:cc:dd:ee:ff
 ```
