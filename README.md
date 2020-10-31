@@ -18,9 +18,12 @@ sudo iwconfig wlan0 mode monitor
 sudo ifconfig wlan0 up
 
 ```
+<img src="https://user-images.githubusercontent.com/58834907/97774821-8419d400-1b9e-11eb-9e95-7b389b2d0c2b.PNG" width="90%"></img>
+
 - **Execute Program**
 ```
 make
 sudo ./NW_YJ <interface> <mac address>
 sudo ./NW_YJ wlan0 aa:bb:cc:dd:ee:ff
 ```
+<img src="https://user-images.githubusercontent.com/58834907/97774846-a0b60c00-1b9e-11eb-8aa7-966a3d615e45.PNG" width="90%"></img>
