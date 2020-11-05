@@ -3,7 +3,7 @@
 #include <iostream>
 #include <stdint.h>
 #include <string.h>
-#include <wiring.h>
+#include <wiringPi.h>
 #include <stdio.h>
 
 using namespace std;
