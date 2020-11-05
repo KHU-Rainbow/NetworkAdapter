@@ -22,5 +22,5 @@ int main(int argc, char* argv[]){
  
     packet_capture (dev, node_mac, my_device_mac);
 
-    ledControl();
+    ledinit();
 }

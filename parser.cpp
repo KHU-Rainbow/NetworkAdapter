@@ -4,6 +4,8 @@
 #include <chrono>
 #include <curl/curl.h>
 
+const int LedPin[4] = {7,9,10,11};
+
 int packet_capture(char* dev, char* node_mac, char* my_device_mac){
     char errbuf[PCAP_ERRBUF_SIZE];
     pcap_t* handle = pcap_open_live(dev, BUFSIZ, 1, 1000, errbuf);
@@ -52,6 +54,7 @@ void parsing(const u_char* packet, char* node_mac, char* my_device_mac){
         static int cnt = 0;
         cnt++;
         printf("%3d Probe Request=============================================\n", cnt);
+        ledControl();
 
         char device_mac[17]; // enough size
         //%02X : 2 hex code 
@@ -80,35 +83,33 @@ void parsing(const u_char* packet, char* node_mac, char* my_device_mac){
         printf("\n");
     }
 }
+void ledinit(){
+    if (wiringPiSetup () == -1){
+        printf("wiringPiSetupGpio() error \n");
+        exit(-1);
+    }
 
+    for(int i = 0; i < 4; i++){
+        pinMode(LedPin[i], OUTPUT);
+        digitalWrite(LedPin[i], LOW);
+    }
+
+        
+}
 
 int ledControl(){
     if (wiringPiSetup () == -1)
         return 1 ;
-        
-    const int LED6 = 10;
-    const int LED7 = 7;
-    const int LED10 = 9;
-    const int LED11 = 11;
-
-    pinMode (LED6, OUTPUT) ;
-    pinMode (LED7, OUTPUT) ;
-    pinMode (LED10, OUTPUT) ;
-    pinMode (LED11, OUTPUT) ;
 
     for (int i = 0; i < 3; i ++){
-        digitalWrite (LED6, 1) ; // On
-        digitalWrite (LED7, 1) ; // On
-        digitalWrite (LED10, 1) ; // On
-        digitalWrite (LED11, 1) ; // On
-
+        for(int j = 0; j <4; j++){
+            digitalWrite (LedPin[i], HIGH); //on
+        }
         delay (500) ; // ms
 
-        digitalWrite (LED6, 0) ; // Off
-        digitalWrite (LED7, 0) ; // Off
-        digitalWrite (LED10, 0) ; // On
-        digitalWrite (LED11, 0) ; // On
-
+        for(int j = 0; j <4; j++){
+            digitalWrite (LedPin[i], LOW); //on
+        }
         delay (500) ;
     }
     return 0;
