@@ -61,6 +61,7 @@ void parsing(const u_char* packet, char* node_mac, char* my_device_mac){
         if((my_mac[0] == ih->add2[0])&&(my_mac[1] == ih->add2[1])&&(my_mac[2] == ih->add2[2])
             &&(my_mac[3] == ih->add2[3])&&(my_mac[4] == ih->add2[4])&&(my_mac[5] == ih->add2[5])){
             printf("\n=== This is from your phone ===\n");
+            ledControl();
             //Send Data to Cloud Service 
             //~~
         }
@@ -78,4 +79,36 @@ void parsing(const u_char* packet, char* node_mac, char* my_device_mac){
         printf("timestamp : %d \n", timestamp);
         printf("\n");
     }
+}
+
+
+void ledControl(){
+    if (wiringPiSetup () == -1)
+    return 1 ;
+    const int LED6 = 10;
+    const int LED7 = 7;
+    const int LED10 = 9;
+    const int LED11 = 11;
+
+    pinMode (LED6, OUTPUT) ;
+    pinMode (LED7, OUTPUT) ;
+    pinMode (LED10, OUTPUT) ;
+    pinMode (LED11, OUTPUT) ;
+
+    for (int i = 0; i < 3; i ++){
+        digitalWrite (LED6, 1) ; // On
+        digitalWrite (LED7, 1) ; // On
+        digitalWrite (LED10, 1) ; // On
+        digitalWrite (LED11, 1) ; // On
+
+        delay (500) ; // ms
+
+        digitalWrite (LED6, 0) ; // Off
+        digitalWrite (LED7, 0) ; // Off
+        digitalWrite (LED10, 0) ; // On
+        digitalWrite (LED11, 0) ; // On
+
+        delay (500) ;
+    }
+
 }

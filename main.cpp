@@ -21,4 +21,6 @@ int main(int argc, char* argv[]){
     getMacAddress (node_mac, dev);
  
     packet_capture (dev, node_mac, my_device_mac);
+
+    ledControl();
 }

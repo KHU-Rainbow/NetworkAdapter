@@ -3,6 +3,8 @@
 #include <iostream>
 #include <stdint.h>
 #include <string.h>
+#include <wiring.h>
+#include <stdio.h>
 
 using namespace std;
 
@@ -13,3 +15,6 @@ int packet_capture(char* dev, char* node_mac, char* my_device_mac);
 
 
 void parsing(const u_char* packet, char* node_mac, char* my_device_mac);
+
+
+void ledControl();
