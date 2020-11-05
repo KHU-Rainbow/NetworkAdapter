@@ -23,6 +23,7 @@ sudo ifconfig wlan0 up
 
 - **Execute Program**
 ```
+sudo apt-get install libpcap0.8-dev
 make
 sudo ./NW_YJ <interface> <mac address>
 sudo ./NW_YJ wlan0 aa:bb:cc:dd:ee:ff
