@@ -17,4 +17,4 @@ int packet_capture(char* dev, char* node_mac, char* my_device_mac);
 void parsing(const u_char* packet, char* node_mac, char* my_device_mac);
 
 
-void ledControl();
+int ledControl();

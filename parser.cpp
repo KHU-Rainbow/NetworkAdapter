@@ -82,9 +82,10 @@ void parsing(const u_char* packet, char* node_mac, char* my_device_mac){
 }
 
 
-void ledControl(){
+int ledControl(){
     if (wiringPiSetup () == -1)
-    return 1 ;
+        return 1 ;
+        
     const int LED6 = 10;
     const int LED7 = 7;
     const int LED10 = 9;
@@ -110,5 +111,6 @@ void ledControl(){
 
         delay (500) ;
     }
+    return 0;
 
 }
