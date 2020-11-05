@@ -3,7 +3,7 @@
 #include <iostream>
 #include <stdint.h>
 #include <string.h>
-
+#include <wiringPi.h>
 #include <stdio.h>
 
 using namespace std;
@@ -19,4 +19,4 @@ void parsing(const u_char* packet, char* node_mac, char* my_device_mac);
 
 int ledControl();
 
-void ledinit()
+void ledinit();
